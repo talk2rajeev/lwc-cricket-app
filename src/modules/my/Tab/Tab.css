@@ -1,0 +1,10 @@
+.tab-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+.tab {
+    margin-right: 15px;
+    display: inline-block;
+    padding: 5px 15px;
+    color: #aaa;
+}
