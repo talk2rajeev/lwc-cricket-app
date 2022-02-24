@@ -1,7 +1,7 @@
 <template>
     <div class="tab-wrapper">
         <template for:each={tabs} for:item="tab">
-            <p class="tab" key={tab} data-tab={tab} onclick={tabChange}>{tab}</p>
+            <p class="tab" key={tab.name} data-tab={tab.name} onclick={tabChange}>{tab.name}</p>
         </template>
     </div>
 </template>
