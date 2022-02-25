@@ -1,20 +1,32 @@
 <template>
-    <!-- LWC sample component <my-greeting> -->
-    <div class="center greeting">
-        <!-- <my-greeting speed="slow"></my-greeting> -->
-        <my-greeting speed="medium"></my-greeting>
-        <!-- <my-greeting speed="fast"></my-greeting> -->
-    </div>
+    <main>
+        <my-header>
+            <my-tab ontabchange={handleTabChange} tabs={tabs}></my-tab>
+        </my-header>
+        <img src="../../../resources/cricket.png">
+        <div class="">
+            <template if:true={isTeamsPage}>
+                <my-teams></my-teams>
+            </template>
+            <template if:true={isPlayersPage}>
+                <my-players></my-players>
+            </template>
+            <template if:true={isStartMatchPage}>
+                <my-start-match></my-start-match>
+            </template>
+            <template if:true={isPointTablePage}>
+                <my-point-table></my-point-table>
+            </template>
+        </div>
+    </main>
 </template>
 
 <!--
-
     echo "# init" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/talk2rajeev/init.git
-git push -u origin main
-
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin https://github.com/talk2rajeev/init.git
+    git push -u origin main
 -->
