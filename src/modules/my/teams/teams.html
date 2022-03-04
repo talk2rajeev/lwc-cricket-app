@@ -1,0 +1,31 @@
+<template>
+    <my-content>
+        <div>
+            <div class="create-form">
+                <input type="text" onchange={onEnterTeamName} value={teamName} placeholder="Enter Unique Team name" />
+                <button class="btn btn-primary" onclick={createTeam}>Create Team</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="team-list">
+                <h2>Teams</h2>
+                <template for:each={teams} for:item="team">
+                    <div  key={team.name}>
+                        <div class="team-list-item">
+                            <span>
+                                {team.name}
+                            </span>
+                            <button data-id={team.id} onclick={managePlayers}>Manage Players</button>
+                            <button data-id={team.id} onclick={removeTeam}>Delete</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div>
+                
+            </div>
+        </div>
+
+    </my-content>
+</template>
