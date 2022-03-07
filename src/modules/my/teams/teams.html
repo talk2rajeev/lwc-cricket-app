@@ -6,7 +6,6 @@
                 <button class="btn btn-primary" onclick={createTeam}>Create Team</button>
             </div>
         </div>
-
         <div class="grid">
             <div class="team-list">
                 <h2>Teams</h2>
@@ -22,8 +21,11 @@
                     </div>
                 </template>
             </div>
+
             <div>
-                
+                <template if:true={isTeamSelected}>
+                    <h2>{selectedTeam.name}</h2>
+                </template>
             </div>
         </div>
 
