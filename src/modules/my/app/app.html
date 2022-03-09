@@ -3,8 +3,10 @@
         <my-header>
             <my-tab ontabchange={handleTabChange} tabs={tabs}></my-tab>
         </my-header>
-        <img src="../../../resources/cricket.png">
         <div class="">
+            <template if:true={isHomePage}>
+                <my-home></my-home>
+            </template>
             <template if:true={isTeamsPage}>
                 <my-teams></my-teams>
             </template>

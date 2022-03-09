@@ -9,7 +9,8 @@ import { LightningElement } from 'lwc';
 export default class App extends LightningElement { 
     tabs = [{name: 'Teams', activeClass: 'active'}, {name: 'Players', activeClass: ''}, {name: 'Start Match', activeClass: ''}, {name: 'Point Table', activeClass: ''}];
     
-    isTeamsPage=true;
+    isHomePage = true;
+    isTeamsPage=false;
     isPlayersPage=false;
     isStartMatchPage = false;
     isPointTablePage = false;
@@ -17,6 +18,7 @@ export default class App extends LightningElement {
     handleTabChange(e) {
         this.tab = e.detail;
         this.tabs = this.tabs.map(tab => {
+            this.isHomePage = e.detail === 'Home';
             this.isTeamsPage = e.detail === 'Teams';
             this.isPlayersPage = e.detail === 'Players';
             this.isStartMatchPage = e.detail === 'Start Match';
