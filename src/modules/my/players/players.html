@@ -1,9 +1,32 @@
 <template>
     <my-content>
-        <h4 class="sd">Players</h4>
-        <div class="add-player-form">
-            <input type="text" onchange={onEnterTeamName} value={playerName} placeholder="Player Name" />
-            <button class="btn btn-primary" onclick={createTeam}>Add Player</button>
+        <div class="thirty-seventy-grid">
+            <div class="player-container">
+                <h4 class="sd">Create New Player</h4>
+                <div class="add-player-form">
+                    <input type="text" class="playerName" onchange={onEnterPlayerName} value={playerName} placeholder="Player Name" />
+                    <button class="btn btn-primary" onclick={createPlayer}>Create Player</button>
+                </div>    
+                <div class="new-playerlist-box">
+                    <div class="players-box-title">Unpicked players</div>
+                    <div><span class="info">Drag and drop player to desired team</span></div>
+                    <div class="unpicked-playerlist">
+                        
+                        <template for:each={unpickedPlayers} for:item="player">
+                            <div class="unpicked-player"  key={player}>
+                                {player}
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <div class="team-container">
+                <template for:each={teams} for:item="team">
+                    <div class="team-box"  key={team.name}>
+                        <div class="team-title">{team.name}</div>
+                    </div>
+                </template>
+            </div>
         </div>
     </my-content>
 </template>
