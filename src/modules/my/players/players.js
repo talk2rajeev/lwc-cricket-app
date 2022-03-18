@@ -3,16 +3,26 @@ import { setStore, getFromStore } from '../../../services/storage';
 
 export default class Players extends LightningElement {
     teams = [];
-
+    unpickedPlayers = [];
     playerName='';
 
-    constructor() {
-        super();
-
+    connectedCallback() {
         this.teams = getFromStore('teams') || [];
+        this.unpickedPlayers =  getFromStore('unPickedPlayers') || [];
+    }
+    
+
+    onEnterPlayerName(e) {
+        this.playerName = e.target.value;
     }
 
-    addPlayer(e) {
-        alert(e.template.querySelect('playerName').value);
+    createPlayer(e) {
+        this.unpickedPlayers = getFromStore('unPickedPlayers') || [];
+        if(this.unpickedPlayers.includes(this.playerName)) {
+            alert('player already exist');
+        } else {
+            this.unpickedPlayers.push(this.playerName);
+            setStore('unPickedPlayers',  JSON.stringify(this.unpickedPlayers));        
+        }
     }
 }
