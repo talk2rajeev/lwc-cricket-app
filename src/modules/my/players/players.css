@@ -31,14 +31,39 @@
     padding: 5px 0;
 }
 .info {
+    margin-bottom: 10px;
+}
+.info > span{
     font-size: 12px;
     color: #999;
 }
 .unpicked-playerlist {
-
+    border: 1px solid #cdcdcd;
+    padding: 15px;
+}
+.unpicked-player {
+    padding: 3px 5px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    color: #555;
+    cursor: pointer;
+}
+.unpicked-player:hover {
+    border: 1px solid #ddd;
 }
 .new-playerlist-box {
     padding: 15px 0;
+}
+.delete-icon {
+    margin-left: 10px;
+    font-size: 12px;
+}
+.delete-icon:hover {
+    color: red;
 }
 .add-player-form {
     margin: 15px 0 0;
