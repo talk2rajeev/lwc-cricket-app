@@ -9,12 +9,13 @@
                 </div>    
                 <div class="new-playerlist-box">
                     <div class="players-box-title">Unpicked players</div>
-                    <div><span class="info">Drag and drop player to desired team</span></div>
+                    <div class="info"><span >Drag and drop player to desired team</span></div>
                     <div class="unpicked-playerlist">
                         
                         <template for:each={unpickedPlayers} for:item="player">
                             <div class="unpicked-player"  key={player}>
                                 {player}
+                                <span class="delete-icon" onclick={deletePlayer}>X</span>
                             </div>
                         </template>
                     </div>
