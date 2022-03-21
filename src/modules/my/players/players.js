@@ -22,7 +22,12 @@ export default class Players extends LightningElement {
             alert('player already exist');
         } else {
             this.unpickedPlayers.push(this.playerName);
+            this.playerName = '';
             setStore('unPickedPlayers',  JSON.stringify(this.unpickedPlayers));        
         }
+    }
+
+    deletePlayer() {
+        
     }
 }
