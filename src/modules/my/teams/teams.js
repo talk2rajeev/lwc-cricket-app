@@ -16,6 +16,13 @@ export default class Teams extends LightningElement {
         this.teamName = e.target.value;
     }
 
+    onPressEnter(e) {   
+        if(e.key === 'Enter') {
+            console.log('create ', this.teamName);
+            this.createTeam();
+        }
+    }
+
     managePlayers(e) {
         const id = e.target.dataset.id;
         
@@ -32,6 +39,8 @@ export default class Teams extends LightningElement {
         this.teamName ='';
         setStore('teams', JSON.stringify(newTeams));
     }
+
+    
  
     managePlayers(e) {
         const selectedTeamId = e.target.dataset.id;
