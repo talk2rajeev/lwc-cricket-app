@@ -40,7 +40,10 @@ export default class Teams extends LightningElement {
         setStore('teams', JSON.stringify(newTeams));
     }
 
-    
+    deleteTeam() {
+        const name = e.target.dataset.name;
+        this.teams.filter(team => team.name === name);
+    }
  
     managePlayers(e) {
         const selectedTeamId = e.target.dataset.id;
