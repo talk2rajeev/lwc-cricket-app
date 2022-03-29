@@ -27,6 +27,25 @@ export default class Players extends LightningElement {
         }
     }
 
+    dragstart_handler(ev) {
+        const data = ev.target.dataset.playername;
+        // Add the target element's id to the data transfer object
+        ev.dataTransfer.setData("text/plain", data);
+        ev.dataTransfer.effectAllowed = "move";
+    }
+
+    drop_handler(ev) {
+        ev.preventDefault();
+        // Get the id of the target and add the moved element to the target's DOM
+        const data = ev.dataTransfer.getData("text/plain");
+        console.log('drop_handler > received data ', data)
+    }
+
+    dragover_handler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move";
+    }
+
     deletePlayer() {
         
     }
