@@ -13,7 +13,7 @@
                     <div class="unpicked-playerlist">
                         
                         <template for:each={unpickedPlayers} for:item="player">
-                            <div class="unpicked-player"  key={player}>
+                            <div class="unpicked-player"  key={player} draggable="true" data-playername={player} ondragstart={dragstart_handler}>
                                 {player}
                                 <span class="delete-icon" onclick={deletePlayer}>X</span>
                             </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="team-container">
                 <template for:each={teams} for:item="team">
-                    <div class="team-box"  key={team.name}>
+                    <div class="team-box"  key={team.name} ondrop={drop_handler} ondragover={dragover_handler}>
                         <div class="team-title">{team.name}</div>
                     </div>
                 </template>
