@@ -14,14 +14,11 @@ export default class Teams extends LightningElement {
     }
     onEnterTeamName(e){
         this.teamName = e.target.value;
+        console.log(e.target.value);
+        console.log('onchange ', this.teamName)
     }
 
-    onPressEnter(e) {   
-        if(e.key === 'Enter') {
-            console.log('create ', this.teamName);
-            this.createTeam();
-        }
-    }
+    
 
     managePlayers(e) {
         const id = e.target.dataset.id;
