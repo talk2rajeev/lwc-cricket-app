@@ -1,8 +1,8 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import { setStore, getFromStore } from '../../../services/storage';
 
 export default class Players extends LightningElement {
-    teams = [];
+    @track teams = [];
     unpickedPlayers = [];
     playerName='';
 
@@ -37,8 +37,18 @@ export default class Players extends LightningElement {
     drop_handler(ev) {
         ev.preventDefault();
         // Get the id of the target and add the moved element to the target's DOM
-        const data = ev.dataTransfer.getData("text/plain");
-        console.log('drop_handler > received data ', data)
+        const playerName = ev.dataTransfer.getData("text/plain");
+        const team = ev.target.dataset.team;
+        debugger;
+        const curTeam = this.teams.find(t => t.name === team);
+        if(!curTeam.players.includes(playerName)) {
+            curTeam.players.push(playerName);
+            this.unpickedPlayers = this.unpickedPlayers.filter(player => player !== playerName);
+        } 
+        const newTeam = this.teams.map(team => team.name === team ? curTeam : team);
+        this.teams = newTeam;
+        setStore('teams', JSON.stringify(this.teams));
+        setStore('unPickedPlayers', JSON.stringify(this.unpickedPlayers));
     }
 
     dragover_handler(ev) {
