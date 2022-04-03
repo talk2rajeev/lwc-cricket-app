@@ -23,8 +23,14 @@
             </div>
             <div class="team-container">
                 <template for:each={teams} for:item="team">
-                    <div class="team-box"  key={team.name} ondrop={drop_handler} ondragover={dragover_handler}>
+                    <div class="team-box" data-team={team.name}  key={team.name} ondrop={drop_handler} ondragover={dragover_handler}>
                         <div class="team-title">{team.name}</div>
+                        <template for:each={team.players} for:item="player">
+                            <div class="unpicked-player"  key={player} >
+                                {player}
+                                <span class="delete-icon" data-player={player} data-team={team.name} onclick={removePlayerFromTeam}>X</span>
+                            </div>
+                        </template>
                     </div>
                 </template>
             </div>
