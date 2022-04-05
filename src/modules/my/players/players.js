@@ -17,14 +17,15 @@ export default class Players extends LightningElement {
     }
 
     createPlayer(e) {
+        debugger;
         this.unpickedPlayers = getFromStore('unPickedPlayers') || [];
         if(this.unpickedPlayers.includes(this.playerName)) {
             alert('player already exist');
         } else {
             this.unpickedPlayers.push(this.playerName);
-            this.playerName = '';
             setStore('unPickedPlayers',  JSON.stringify(this.unpickedPlayers));        
         }
+        this.playerName ='';
     }
 
     dragstart_handler(ev) {
@@ -56,7 +57,32 @@ export default class Players extends LightningElement {
         ev.dataTransfer.dropEffect = "move";
     }
 
-    deletePlayer() {
+    deletePlayer(e) {
+        console.log('deletePlayer', e.target.dataset);    
+    }
+
+    removePlayerFromTeam(e) {
+        console.log('removePlayerFromTeam', e.target.dataset); 
+        const { team, playername } =  e.target.dataset;
+        const newTeam = JSON.parse(JSON.stringify(this.teams));
+        const t = this.teams.find(t => t.name === team);
+        const newPlayers = t.players.filter(p => p!== playername);
+
+        this.playerName = playername;
+        this.createPlayer();
+
+        const newTeamList = newTeam.map(t => {
+            if(t.name === team) {
+                return {
+                    ...t,
+                    players: newPlayers
+                }
+            }
+            return t
+        });
+        this.teams = newTeamList;
+        setStore('teams', JSON.stringify(this.teams));
+
         
     }
 }
