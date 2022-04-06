@@ -17,7 +17,6 @@ export default class Players extends LightningElement {
     }
 
     createPlayer(e) {
-        debugger;
         this.unpickedPlayers = getFromStore('unPickedPlayers') || [];
         if(this.unpickedPlayers.includes(this.playerName)) {
             alert('player already exist');
@@ -58,7 +57,10 @@ export default class Players extends LightningElement {
     }
 
     deletePlayer(e) {
-        console.log('deletePlayer', e.target.dataset);    
+        console.log('deletePlayer', e.target.dataset);   
+        const newPlayerList = this.unpickedPlayers.filter(p => p !== e.target.dataset.playername);
+        this.unpickedPlayers = newPlayerList;
+        setStore('unPickedPlayers', JSON.stringify(newPlayerList));
     }
 
     removePlayerFromTeam(e) {
