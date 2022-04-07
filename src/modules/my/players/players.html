@@ -15,7 +15,7 @@
                         <template for:each={unpickedPlayers} for:item="player">
                             <div class="unpicked-player"  key={player} draggable="true" data-playername={player} ondragstart={dragstart_handler}>
                                 {player}
-                                <span class="delete-icon" onclick={deletePlayer}>X</span>
+                                <span class="delete-icon" data-playername={player} onclick={deletePlayer}>X</span>
                             </div>
                         </template>
                     </div>
@@ -28,7 +28,7 @@
                         <template for:each={team.players} for:item="player">
                             <div class="unpicked-player"  key={player} >
                                 {player}
-                                <span class="delete-icon" data-player={player} data-team={team.name} onclick={removePlayerFromTeam}>X</span>
+                                <span class="delete-icon" data-playername={player} data-team={team.name} onclick={removePlayerFromTeam}>X</span>
                             </div>
                         </template>
                     </div>
