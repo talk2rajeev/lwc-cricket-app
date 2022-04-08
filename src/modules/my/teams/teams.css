@@ -55,3 +55,7 @@ h2 {
 .team-list-item button {
     cursor: pointer;
 }
+
+.player-box {
+    border: 1px solid #cdcdcd;
+}
