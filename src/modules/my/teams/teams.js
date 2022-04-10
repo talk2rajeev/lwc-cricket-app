@@ -6,7 +6,7 @@ export default class Teams extends LightningElement {
     players = [];
 
     teamName='';
-    @track selectedTeam = null;
+    selectedTeam = null;
     @track isTeamSelected = false;
 
     connectedCallback() {
@@ -17,8 +17,6 @@ export default class Teams extends LightningElement {
         console.log(e.target.value);
         console.log('onchange ', this.teamName)
     }
-
-    
 
     managePlayers(e) {
         const id = e.target.dataset.id;
@@ -44,7 +42,8 @@ export default class Teams extends LightningElement {
  
     managePlayers(e) {
         const selectedTeamId = e.target.dataset.id;
-        this.selectedTeam = this.teams.find(team => team.id === Number(selectedTeamId))
+        this.selectedTeam = this.teams.find(team => team.id === Number(selectedTeamId));
+        console.log('selectedTeam ', this.selectedTeam);
         this.isTeamSelected = true;
     }
 
