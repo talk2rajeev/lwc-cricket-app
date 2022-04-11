@@ -26,7 +26,6 @@ input:focus {
 .grid {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-gap: 15px;
 }
 
 h2 {
@@ -57,5 +56,16 @@ h2 {
 }
 
 .player-box {
-    border: 1px solid #cdcdcd;
+    background-color: #efefef;
+}
+
+.unpicked-player {
+    padding: 3px 5px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    color: #555;
 }
