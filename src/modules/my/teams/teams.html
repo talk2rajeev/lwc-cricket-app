@@ -22,10 +22,16 @@
                 </template>
             </div>
 
-            <div>
+            <div class="team-list player-box">
                 <template if:true={isTeamSelected}>
                     <h2>{selectedTeam.name}</h2>
-                    <div class="player-box"></div>
+                    <div>
+                        <template for:each={selectedTeam.players} for:item="player">
+                            <div class="unpicked-player"  key={player}>
+                                {player}
+                            </div>
+                        </template>
+                    </div>
                 </template>
             </div>
         </div>
