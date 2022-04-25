@@ -24,6 +24,10 @@ export default class Teams extends LightningElement {
     }
 
     createTeam() {
+        if(!this.teamName) {
+            alert('Team name can not be empty');
+            return;
+        }
         const team = this.teams.find(team => team.name.toLowerCase() === this.teamName.toLowerCase());
         const newTeams = [...this.teams, {name: this.teamName, id: Math.floor(Math.random()*1000), players: []}];
         if (team) {
