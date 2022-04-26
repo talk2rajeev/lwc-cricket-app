@@ -39,7 +39,7 @@ export default class Players extends LightningElement {
         // Get the id of the target and add the moved element to the target's DOM
         const playerName = ev.dataTransfer.getData("text/plain");
         const team = ev.target.dataset.team;
-        debugger;
+        
         const curTeam = this.teams.find(t => t.name === team);
         if(!curTeam.players.includes(playerName)) {
             curTeam.players.push(playerName);
