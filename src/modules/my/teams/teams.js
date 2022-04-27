@@ -53,7 +53,7 @@ export default class Teams extends LightningElement {
 
 
     removeTeam(e) {
-        const id = e.target.dataset.id;
+        const id = Number(e.target.dataset.id);
         const newTeams = this.teams.filter(team => team.id !== id);
         this.teams = newTeams;
         setStore('teams', JSON.stringify(newTeams));
