@@ -1,5 +1,12 @@
 <template>
     <div>
         <span class="sd">Start match</span>
+        <div>
+            <select onchange={selectTeam}>
+                <template for:each={teams} for:item="team" >
+                    <option key={team.id} value={team.name}>{team.name}</option>
+                </template>
+            </select>
+        </div>
     </div>
 </template>
