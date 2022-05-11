@@ -1,12 +1,33 @@
 <template>
-    <div>
-        <span class="sd">Start match</span>
+    <div style="padding: 10px 50px;">
+        <span class="sd">Select 2 Teams</span>
         <div>
             <select onchange={selectTeam}>
+                <option >select</option>
                 <template for:each={teams} for:item="team" >
                     <option key={team.id} value={team.name}>{team.name}</option>
                 </template>
             </select>
+        </div>
+        <div>
+            <template if:true={startingToss}>
+                <button onclick={randomlySelectWinner}>
+                    start Toss
+                </button>
+            </template>
+        </div>
+        <div>
+            {selectTeam_one}
+            {selectTeam_two}
+        </div>
+
+        <div>
+            <template if:true={showTeam}>
+                <h3>{battingTeam.name}</h3>
+                <template for:each={battingTeam.players} for:item="player" >
+                    <div key={player}>{player}</div>
+                </template>
+            </template>
         </div>
     </div>
 </template>
