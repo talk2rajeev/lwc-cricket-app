@@ -10,6 +10,7 @@ export default class StartMatch extends LightningElement {
 
     connectedCallback() {
         this.teams = getFromStore('teams') || [];
+        this.selectedTeamForMatch = getFromStore('selectedTeamForMatch') || [];
         console.log(this.teams);
     }
 
@@ -53,6 +54,7 @@ export default class StartMatch extends LightningElement {
             return;
         }
         if(this.selectedTeamForMatch.length === 2) {
+            
             alert('2 teams already selected');
             return;
         } 
@@ -61,12 +63,23 @@ export default class StartMatch extends LightningElement {
             return;
         }
         this.selectedTeamForMatch = [...this.selectedTeamForMatch, e.target.value];
+        setStore('selectedTeamForMatch', JSON.stringify(this.selectedTeamForMatch));
         console.log(this.selectedTeamForMatch)
     }
 
     randomlySelectWinner() {
         this.toss_winner = Math.floor(Math.random() *10) % 2 === 0 ? this.selectedTeamForMatch[0] : this.selectedTeamForMatch[1];
         alert(this.toss_winner+' Won the toss and will bat first');
+    }
+
+    get teamA() {
+        const teamA = this.selectedTeamForMatch[0];
+        return this.teams.find(t => t.name === teamA);
+    }
+
+    get teamB() {
+        const teamB = this.selectedTeamForMatch[1];
+        return this.teams.find(t => t.name === teamB);
     }
 
 
