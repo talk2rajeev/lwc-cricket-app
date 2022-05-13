@@ -2,3 +2,28 @@ select {
     padding: 4px 8px;
     min-width: 150px;
 }
+
+.a-grid{
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-gap: 20px;
+}
+
+.teamA-teamB-grid {
+    display: grid;
+    grid-template-columns: 45% auto 45%;
+    justify-content: space-between;
+}
+
+.teamA-teamB-grid > .team-box {
+    border: 1px solid #cdcdcd;
+    box-shadow: 1px 1px 3px #cdcdcd;
+}
+
+.team-box {
+    padding: 0px 20px;
+}
+
+.team-box h4 {
+    border-bottom: 1px solid #cdcdcd;
+}
