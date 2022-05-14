@@ -1,24 +1,46 @@
 <template>
     <div style="padding: 10px 50px;">
         <span class="sd">Select 2 Teams</span>
-        <div>
-            <select onchange={selectTeam}>
-                <option >select</option>
-                <template for:each={teams} for:item="team" >
-                    <option key={team.id} value={team.name}>{team.name}</option>
-                </template>
-            </select>
+        <div class="a-grid">
+            <div>
+                <select onchange={selectTeam}>
+                    <option >select</option>
+                    <template for:each={teams} for:item="team" >
+                        <option key={team.id} value={team.name}>{team.name}</option>
+                    </template>
+                </select>
+            </div>
+            <template if:true={startingToss}>
+                <div class="teamA-teamB-grid">
+                    <div class="team-box">
+                        <h4>{selectTeam_one}</h4>
+                        <div>
+                            <template for:each={teamA.players} for:item="player" >
+                                <div key={player}>{player}</div>
+                            </template>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Vs</h2>
+                    </div>
+                    <div class="team-box">
+                        <h4>{selectTeam_two}</h4>
+                        <div>
+                            <template for:each={teamB.players} for:item="player" >
+                                <div key={player}>{player}</div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </div>
+       
         <div>
             <template if:true={startingToss}>
                 <button onclick={randomlySelectWinner}>
                     start Toss
                 </button>
             </template>
-        </div>
-        <div>
-            {selectTeam_one}
-            {selectTeam_two}
         </div>
 
         <div>
