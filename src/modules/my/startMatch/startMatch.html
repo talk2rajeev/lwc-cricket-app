@@ -12,43 +12,58 @@
             </div>
             <template if:true={startingToss}>
                 <div class="teamA-teamB-grid">
-                    <div class="team-box">
-                        <h4>{selectTeam_one}</h4>
-                        <div>
-                            <template for:each={teamA.players} for:item="player" >
+                    <template if:true={showTeam}>
+                        <div class="team-box">
+                            <h3>Batting Team: {battingTeam.name}</h3>
+                            <template for:each={battingTeam.players} for:item="player" >
                                 <div key={player}>{player}</div>
                             </template>
                         </div>
-                    </div>
-                    <div>
-                        <h2>Vs</h2>
-                    </div>
-                    <div class="team-box">
-                        <h4>{selectTeam_two}</h4>
                         <div>
-                            <template for:each={teamB.players} for:item="player" >
-                                <div key={player}>{player}</div>
-                            </template>
+                            <h2>Vs</h2>
                         </div>
-                    </div>
+                        <div class="team-box">
+                            <h4>Fileding Team: {filedingTeam.name}</h4>
+                            <div>
+                                <template for:each={filedingTeam.players} for:item="player" >
+                                    <div key={player}>{player}</div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </template>
         </div>
+
+        <template if:true={chooseBowler}>
+            <div class="backdrop"></div>
+            <div class="choose-bowler-dialog">
+                <span class="close-dialog" onclick={closeChooseBowlerDialog}>X</span>
+                <div>
+                    <select onchange={onBowlerChange}>
+                        <option>--Select Bowler--</option>
+                        <template if:true={showTeam}>
+                            <template for:each={filedingTeam.players} for:item="player" >
+                                <option key={player} value={player}>{player}</option>
+                            </template>
+                        </template>
+                    </select>
+                    <div style="text-align: center;">
+                        <template if:true={showTimer}>
+                            <div class="timer">
+                                {bowlingTimer}
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
        
         <div>
             <template if:true={startingToss}>
                 <button onclick={randomlySelectWinner}>
                     start Toss
                 </button>
-            </template>
-        </div>
-
-        <div>
-            <template if:true={showTeam}>
-                <h3>{battingTeam.name}</h3>
-                <template for:each={battingTeam.players} for:item="player" >
-                    <div key={player}>{player}</div>
-                </template>
             </template>
         </div>
     </div>
