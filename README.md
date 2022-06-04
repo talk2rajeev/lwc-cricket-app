@@ -3,6 +3,10 @@
 This is a book cricket app. It is built using LWC (Lightening web component) and vanilla javascript
 
 
+## How to install?
+`npm install`
+
+
 ## How to start?
 `npm watch` OR `yarn watch`
 
